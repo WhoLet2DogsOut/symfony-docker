@@ -5,11 +5,11 @@
 up-force:
 	#docker compose pull
 	#docker compose build --pull
-	XDEBUG_MODE=debug docker compose up -d --force-recreate --remove-orphans
+	XDEBUG_MODE=debug UID=1000 GID=1000 docker compose up -d --force-recreate --remove-orphans
 	#docker compose exec php composer install --no-interaction
 
 reload:
-	docker compose up -d --force-recreate
+	XDEBUG_MODE=debug UID=1000 GID=1000 docker compose up -d --force-recreate
 
 down-force:
 	docker compose down -v --remove-orphans
